@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #0b2f4f;
+  --blue: #1479c9;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif;
+}
+
+/* Thin, modern scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #b8c7d6 transparent;
+}
+*::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #c2d0de;
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #9bb3c8;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade {
+  animation: fadeIn 0.25s ease-out;
+}
+
+/* Number-like columns align nicely */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Touch responsiveness: eliminate 300ms mobile tap delay */
+button,
+a,
+select,
+input,
+textarea {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(20, 121, 201, 0.15);
+}
+
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Print: show only the billing records area */
+@media print {
+  body {
+    background: #fff !important;
+  }
+  body * {
+    visibility: hidden;
+  }
+  #print-area,
+  #print-area * {
+    visibility: visible;
+  }
+  #print-area {
+    position: absolute !important;
+    inset: 0;
+    width: 100%;
+    overflow: visible !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  #print-area .overflow-x-auto {
+    overflow: visible !important;
+  }
+  #print-area table {
+    min-width: 0 !important;
+    font-size: 11px;
+  }
+  main {
+    overflow: visible !important;
+  }
+}
